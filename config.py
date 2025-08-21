@@ -11,6 +11,7 @@ TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 admin_id = os.getenv("admin_id")
 denis_id = os.getenv("dalbaeb_id")
+
 def admin_panel():
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = telebot.types.KeyboardButton("▶ ON") #Початок зміни
@@ -18,10 +19,11 @@ def admin_panel():
     item3 = telebot.types.KeyboardButton("⏹ OFF") #Кінець зміни
     markup.add(item1, item2, item3)
     bot.send_message(admin_id, "Admin panel is active", reply_markup=markup)
- 
 
 def default_panel():
-    pass
+    markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item1 = telebot.types.KeyboardButton("🧐 Check Time") #Перевірити час
+    bot.send_message(denis_id, "Default panel is active", reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
 def id_cheacker (message):
