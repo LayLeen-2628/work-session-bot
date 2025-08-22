@@ -24,7 +24,6 @@ total_pause_time = 0
 # Ролі юзерів
 user_roles = {}  # user_id: "admin" або "user"
 
-# >>> Нова функція для обчислення робочої дати
 def get_shift_date(now=None):
     if now is None:
         now = datetime.datetime.now()
@@ -61,7 +60,7 @@ def handle_text(message):
     global admin_shift_date, admin_shift_closed, pause_start_time, total_pause_time, user_roles
 
     user_id = message.from_user.id
-    today = get_shift_date()   # <<< робоча дата
+    today = get_shift_date()   # робоча дата
 
     # Видача ролі лише при першому повідомленні
     if user_id not in user_roles:
